@@ -1,48 +1,44 @@
 import React, {useState} from 'react';
-import {useAppDispatch, useAppSelector} from "../store/store";
-import {goStart,unSet} from "../utils/userSlice";
-import Template from "./Template";
+import Main from "./Main";
+import {iconSun} from '../utils/constants';
+import {iconMoon} from "../utils/constants";
+
 
 const Start = () => {
 
-    const userStyle = useAppSelector(state => state.user.style);
-    const userName = useAppSelector(state => state.user.userName);
+    const [theme, setTheme] = useState('template-light');
 
+    const [iconTheme, setIcontheme] = useState(iconSun);
 
-    const [name,setName] = useState('');
+    const userScreen = window.screen.width;
 
-    const dispatch = useAppDispatch();
-    const action = () =>{
+    const changeTheme = () => {
 
-        dispatch(goStart(name));
+        theme == 'template-light' ? setTheme('template-dark') : setTheme('template-light');
+        iconTheme == iconSun ? setIcontheme(iconMoon) : setIcontheme(iconSun);
+
     }
-const action2 = ()=>{
-        dispatch(unSet());
-}
-    const style = userStyle;
-
-    if(!userName) {
-        return (
-            <div className={'inner col-4'}>
-                <div className={'row justify-content-center center'}><h2>Your Name?</h2></div>
-                <div className={'row justify-content-center'}><input className={'col-10'} type={'text'} value={name} onChange={(e) => setName(e.target.value.trim())}/></div>
-                <div className={'row justify-content-center m-5'}>
-                    <button onClick={action} className={`btn col-12 ${style}`}>Does It Work?</button>
-                </div>
-            </div>
-        )
-    };
 
     return (
-        <div className={'inner col-4'}>
-            <div className={'row justify-content-center center'}><h2>Hello dear {userName}!</h2></div>
+        <div className={`${theme} outer row justify-content-center offset-auto vh-100`}>
+            <div className={"outer2 column col-lg-4 col-sm-10 offset-auto mt-5"}>
 
-            <div className={'row justify-content-center m-5'}>
-                <button onClick={action2} className={`btn col-12 ${style}`}>It Works!!!!</button>
-                <div>SMTH changed!</div>
+                <div className={'d-flex justify-content-between inner2'}><h1 className={'head_h1'}>T O D O</h1>
+                    <div onClick={changeTheme} className={''}><img className={'iconTheme'} src={iconTheme}/></div>
+                </div>
+
+                {
+
+                  <Main userScreen={userScreen} theme={theme}/>
+                }
+
+
+                <div className={'bottom'}>Drag and drop to reorder list</div>
+
             </div>
+
         </div>
     )
 };
 
-export default Template(Start);
+export default Start;

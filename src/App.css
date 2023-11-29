@@ -1,29 +1,341 @@
+
 body {
-  height:100%;
-  width:100%;
-}
-
-.outer{
-  position:relative;
-  width:100%;
-  height:100%;
-}
-.inner{
-  height: fit-content;
-  display:inline-block;
-  position:absolute;
-  vertical-align:middle;
-  margin:auto !important;
-  top:0 !important;
-  bottom:0 !important;
-}
-.template{
-  background-color: #cecdcd;
-  border: 1px solid #cecdcd;
-  border-radius: 10px;
-  padding: 50px;
+    height: 100%;
+    width: 100%;
+    /*background-color: #f9f9f9;*/
+    background-color: hsl(0, 0%, 98%) !important;
 
 }
-.center{
-  text-align: center;
+
+.template-dark .todoField {
+    background-color: #25273c;
+    box-shadow: 0px 20px 20px #000;
 }
+
+li {
+    list-style-type: none;
+}
+
+.outer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.outer2 {
+    position: relative;
+}
+
+.head_h1 {
+    color: #fcfcfc;
+    font-weight: 700;
+}
+
+.inner {
+    height: 70vh;
+    position: relative;
+}
+
+.center {
+    text-align: center;
+}
+
+.todoField {
+    background-color: #fff;
+    min-height: 56%;
+    max-height: 56%;
+    
+    position: relative;
+    overflow-y: auto;
+    border-radius: 6px;
+}
+
+.todoInput {
+
+    border-radius: 6px;
+    border-bottom-style: none !important;
+}
+
+.todoInput input {
+    border: none;
+    background-color: #fff;
+    height: 30px;
+}
+
+.todoItem {
+    font-size: 18px;
+    height: 50px;
+    background-color: #fff;
+    vertical-align: middle;
+    line-height: 50px;
+    position: relative;
+    z-index: 1000;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    margin: -1px 0px;
+}
+
+.todoItem.template-dark, .todoItem.template-dark.todoInput input {
+    background-color: #25273c;
+    color: hsl(234, 39%, 85%);
+    border: 1px solid hsl(233, 14%, 35%);
+
+    border-left-style: none;
+    border-right-style: none;
+
+}
+
+.todoItem.template-light, .todoItem.template-light.todoInput input {
+    color: hsl(235, 19%, 35%);
+    border: 1px solid hsl(233, 11%, 84%);
+
+    border-left-style: none;
+    border-right-style: none;
+}
+
+.todoItem.template-dark.todoInput input {
+    outline: none;
+    border: none;
+}
+
+.todoItem.template-light.todoInput input {
+    outline: none;
+    border: none;
+}
+
+.item1 {
+    border-radius: 6px 6px 0px 0px;
+    margin: 0px -1px;
+}
+
+.todoItems {
+
+    height: fit-content;
+}
+
+.noItems {
+
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+}
+
+.itemIcon {
+    position: relative;
+    top: 5px;
+    bottom: 0;
+    right: -20px;
+    margin: auto;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    /*border:1px solid hsl(233, 14%, 35%);*/
+    border-radius: 10px;
+    text-align: center;
+}
+
+.itemIcon.template-light {
+    border: 1px solid hsl(233, 11%, 84%);
+}
+
+.itemIcon.template-dark {
+    border: 1px solid hsl(233, 14%, 35%);
+}
+
+.itemIconChecked {
+    border: none;
+    background: linear-gradient(to bottom right, blue, pink);
+
+}
+
+.todoItem.checked {
+    color: hsl(233, 11%, 84%);
+}
+
+
+.itemIconImg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: 5px;
+    visibility: hidden;
+}
+
+.itemIconImg.visible {
+    visibility: visible;
+}
+
+.iconTheme {
+    width: 26px;
+    height: 26px;
+}
+
+.itemCrossed {
+
+}
+
+.itemValue {
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.itemCross {
+    top: 5px;
+    bottom: 0;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    position: absolute;
+    right: 20px;
+}
+
+.itemCross.checked {
+    display: none;
+}
+
+.footer {
+    padding-left: 10px;
+    position: absolute;
+    height: 50px;
+    vertical-align: middle;
+    line-height: 50px;
+    border: 1px solid hsl(233, 11%, 84%);
+    border-left-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    font-size: 0.7em;
+    font-weight: bold;
+    color: hsl(234, 11%, 52%);
+    background-color: #fff;
+}
+
+.footer li {
+    display: inline-block;
+    margin-right: auto;
+}
+
+.footer li:hover {
+    color: cornflowerblue;
+}
+
+.notDisplayed {
+    display: none;
+}
+
+.bottom {
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
+    text-align: center;
+    color: hsl(236, 9%, 61%);
+}
+
+@media screen and (max-width: 576px) {
+
+    .todoFieldMobile {
+        min-height: 75% !important;
+        max-height: 75% !important;
+    }
+
+    .outer.template-light {
+        background: url("images/bg-mobile-light.jpg") no-repeat;
+        margin-left: 0px;
+    }
+
+    .inner2 {
+        width: 80%;
+        margin: auto;
+    }
+
+
+    .outer.template-dark {
+        background: url("images/bg-mobile-dark.jpg") no-repeat;
+        background-color: #181824;
+        margin-left: 0px;
+
+    }
+
+    .inner {
+        width: 80%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        height: 90%;
+    }
+
+    .mob-bottom {
+        position: absolute;
+        bottom: 100px;
+        font-size: 0.9em;
+        background-color: #ffffff;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .bottom-1 {
+
+        bottom: 100px;
+
+    }
+
+    .bottom-2 {
+
+        bottom: 20px;
+
+    }
+
+}
+
+@media screen and (min-width: 577px) {
+
+    .todoFieldMobile {
+        min-height: 75% !important;
+        max-height: 75% !important;
+    }
+
+    .outer.template-light {
+        background: url("images/bg-desktop-light.jpg") no-repeat;
+    }
+
+    .outer.template-dark {
+        background: url("images/bg-desktop-dark.jpg") no-repeat;
+        background-color: #181824;
+
+    }
+    .footer.template-dark {
+
+        background-color: #25273c;
+        border: 1px solid hsl(233, 14%, 35%);
+        border-left-style: none;
+        border-right-style:none;
+        border-bottom-style: none;
+
+    }
+
+    .inner {
+        width: 100%;
+    }
+
+
+    .mob-bottom-1 {
+        position: absolute;
+        bottom: 100px;
+        text-align: center;
+    }
+
+    .mob-bottom-2 {
+        position: absolute;
+        bottom: 20px;
+        text-align: center;
+    }
+
+}
+
